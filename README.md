@@ -1,5 +1,6 @@
 # MSA Ecommerce
 - [MSA Ecommerce] User Service Instance
+![user](https://user-images.githubusercontent.com/42602972/165477509-8579620c-baa4-4dec-a1aa-d5b893cce311.png)
 
 ## 프로젝트 개발 구성
 - Java 8
