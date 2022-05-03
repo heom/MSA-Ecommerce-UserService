@@ -85,14 +85,4 @@ public class UserServiceImpl implements UserService {
 
         return new ResponseUser(userDto);
     }
-
-    @Override
-    public ResponseUser getUserByAuth(String userId) {
-        UserEntity userEntity = userRepository.findByUserId(userId);
-
-        if(userEntity == null)
-            throw new UserNotFoundException("Id", userId);
-
-        return new ResponseUser(userEntity);
-    }
 }

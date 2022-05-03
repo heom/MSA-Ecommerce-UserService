@@ -56,11 +56,4 @@ public class UserController {
         ResponseUser responseUser = userService.getUser(userId);
         return ResponseEntity.status(HttpStatus.OK).body(responseUser);
     }
-
-    //Feign API
-    @GetMapping("/users/{userId}")
-    public ResponseEntity<ResponseUser> getUserByAuth(@PathVariable("userId") String userId){
-        ResponseUser responseUser = userService.getUserByAuth(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(responseUser);
-    }
 }

@@ -13,5 +13,4 @@ public interface UserService extends UserDetailsService {
     UserDto getUserDetailsByEmail(String email);
     ResponseUserPage getUsers(Pageable pageable);
     ResponseUser getUser(String userId);
-    ResponseUser getUserByAuth(String userId);
 }

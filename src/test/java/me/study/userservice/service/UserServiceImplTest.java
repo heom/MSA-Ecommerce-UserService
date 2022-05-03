@@ -228,40 +228,4 @@ class UserServiceImplTest {
         //when & then
         assertThrows(UserNotFoundException.class, ()-> userService.getUser(email));
     }
-
-    @Test
-    @DisplayName("getUserByAuth")
-    public void getUserByAuth(){
-        //given
-        UserDto userDto = UserDto.builder()
-                                    .email("test@email.com")
-                                    .name("test")
-                                    .pwd("testPassword")
-                                    .build();
-        ResponseUser responseUser = userService.createUser(userDto);
-
-        //when
-        String userId = responseUser.getUserId();
-        ResponseUser resultResponseUser = userService.getUserByAuth(userId);
-
-        //then
-        assertAll(
-                () -> assertEquals(responseUser.getEmail(), resultResponseUser.getEmail()),
-                () -> assertEquals(responseUser.getName(), resultResponseUser.getName()),
-                () -> assertEquals(responseUser.getUserId(), resultResponseUser.getUserId()),
-                () -> assertEquals(responseUser.getCreatedDate(), resultResponseUser.getCreatedDate()),
-                () -> assertEquals(responseUser.getLastModifiedDate(), resultResponseUser.getLastModifiedDate())
-        );
-    }
-
-    @Test
-    @DisplayName("getUserByAuth_not_found")
-    public void getUserByAuth_not_found(){
-        //given
-        String email = "test@email.com";
-
-        //when & then
-        assertThrows(UserNotFoundException.class, ()-> userService.getUserByAuth(email));
-    }
-
 }

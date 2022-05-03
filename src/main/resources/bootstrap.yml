@@ -3,5 +3,33 @@ spring:
     config:
       uri: http://127.0.0.1:8888
       name: userService
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+  datasource:
+    username: sa
+    password:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    hikari:
+      jdbc-url: jdbc:h2:mem:testdb
+  zipkin:
+    base-url: http://localhost:9411
+    enabled: true
+  sleuth:
+    sampler:
+      probability: 1.0
   profiles:
     active: local
+
+eureka:
+  client:
+    register-with-eureka: true # 현재 프로젝트 Discovery Service 등록(서버로서 기동만 되어 있으면 되기 때문에), Default true
+    fetch-registry: true # EUREKA 서버로부터 인스턴스들의 정보를 주기적으로 가져올 것을 설정, Default true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+  instance:
+    # 랜덤 포트로 0을 사용할 경우, 인스턴스 아이디가 겹치므로 커스텀 아이디 사용
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
